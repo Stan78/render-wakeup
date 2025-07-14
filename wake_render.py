@@ -1,7 +1,7 @@
 import requests
 from datetime import datetime
 
-URL = "https://your-app-name.onrender.com/run"  # Change this to your actual Render URL
+URL = "https://school-monitoring.onrender.com"  # Change this to your actual Render URL
 
 try:
     res = requests.get(URL, timeout=10)
