@@ -1,0 +1,26 @@
+name: Wake Render
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 06:00 UTC (8:00 BG time)
+    - cron: '0 12 * * *'  # 12:00 UTC (14:00 BG time)
+    - cron: '0 17 * * *'  # 17:00 UTC (19:00 BG time)
+  workflow_dispatch:
+
+jobs:
+  ping-render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run wake_render.py
+        run: python wake_render.py
